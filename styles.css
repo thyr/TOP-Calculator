@@ -1,0 +1,46 @@
+* {
+  border: 1px solid black;
+}
+
+body {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+#calContainer {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 45%;
+}
+
+#calScreen {
+  height: 5vh;
+}
+
+#calButtons {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  gap: 5px;
+}
+
+.button1 {
+  flex: 1 1 20%;
+  max-width: 20%;
+  aspect-ratio: 3/2;
+}
+
+.button2y {
+  flex: 1 1 20%;
+  max-width: 20%;
+  aspect-ratio: 2/3;
+}
+
+.button2x {
+  flex: 1 1 40%;
+  max-width: 40%;
+  aspect-ratio: 3/2;
+}
