@@ -8,32 +8,37 @@
     <script src="./calc.js" defer></script>
   </head>
   <body>
-    <div id="calContainer">
-      <div id="calScreen"></div>
-      <div id="calButtons">
-        <div class="button1" id="butC">C</div>
-        <div class="button1" id="butAc">AC</div>
-        <div class="button1" id="butDiv">/</div>
-        <div class="button1" id="butMul">*</div>
-        <div class="button1" id="but7">7</div>
-        <div class="button1" id="but8">8</div>
-        <div class="button1" id="but9">9</div>
-        <div class="button1" id="butSub">-</div>
-        <div class="button1" id="but4">4</div>
-        <div class="button1" id="but5">5</div>
-        <div class="button1" id="but6">6</div>
-        <div class="button1" id="butAdd">+</div>
-        <div class="button1" id="but1">1</div>
-        <div class="button1" id="but2">2</div>
-        <div class="button1" id="but3">3</div>
-        <div class="button2y" id="butEqu">=</div>
-        <div class="button2x" id="but0">0</div>
-        <div class="button1" id="butDec">.</div>
+    <header></header>
+    <main>
+      <div id="display">
+        <div id="calcHistory"></div>
+        <div id="calcInput"></div>
       </div>
-    </div>
-    <div class="footer">
+      <!-- Numerics -->
+      <button id="num-0" class="number">0</button>
+      <button id="num-1" class="number">1</button>
+      <button id="num-2" class="number">2</button>
+      <button id="num-3" class="number">3</button>
+      <button id="num-4" class="number">4</button>
+      <button id="num-5" class="number">5</button>
+      <button id="num-6" class="number">6</button>
+      <button id="num-7" class="number">7</button>
+      <button id="num-8" class="number">8</button>
+      <button id="num-9" class="number">9</button>
+      <button id="decimal" class="number">.</button>
+      <!-- Operators -->
+      <button id="clear" class="operator">C</button>
+      <button id="back" class="operator"><-</button>
+      <button id="power" class="operator">Xy</button>
+      <button id="divide" class="operator">/</button>
+      <button id="multiply" class="operator">*</button>
+      <button id="subtract" class="operator">-</button>
+      <button id="add" class="operator">+</button>
+      <button id="equals" class="operator">=</button>
+    </main>
+    <footer>
       MaybeAReplicant <br />
       <a href="https://github.com/thyr">https://github.com/thyr</a>
-    </div>
+    </footer>
   </body>
 </html>

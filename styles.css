@@ -1,46 +1,96 @@
-* {
-  border: 1px solid black;
-}
-
 body {
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
+  text-align: center;
 }
 
-#calContainer {
-  display: flex;
-  flex-flow: column nowrap;
-  width: 45%;
-}
-
-#calScreen {
-  height: 5vh;
-}
-
-#calButtons {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
+main {
+  display: inline-grid;
+  padding: 10px;
   gap: 5px;
+  grid-template-columns: 80px 80px 80px 80px;
+  grid-template-rows: 80px 80px 80px 80px 80px 80px;
+  grid-template-areas:
+    "display display display display"
+    "clear back power divide"
+    "seven eight nine multiply"
+    "four five six subtract"
+    "one two three add"
+    "zero decimal equals add";
 }
 
-.button1 {
-  flex: 1 1 20%;
-  max-width: 20%;
-  aspect-ratio: 3/2;
+#display {
+  display: grid;
+  grid-area: display;
+  width: 336px;
+  font-size: 35px;
+  overflow: hidden;
+}
+#calcHistory,
+#calcInput {
+  justify-self: end;
+  align-self: end;
+  height: 40px;
+  padding-bottom: 5px;
+  overflow: hidden;
+  text-overflow: clip;
+}
+#calcHistory {
+  font-size: 25px;
 }
 
-.button2y {
-  flex: 1 1 20%;
-  max-width: 20%;
-  aspect-ratio: 2/3;
+#num-0 {
+  grid-area: zero;
 }
-
-.button2x {
-  flex: 1 1 40%;
-  max-width: 40%;
-  aspect-ratio: 3/2;
+#num-1 {
+  grid-area: one;
+}
+#num-2 {
+  grid-area: two;
+}
+#num-3 {
+  grid-area: three;
+}
+#num-4 {
+  grid-area: four;
+}
+#num-5 {
+  grid-area: five;
+}
+#num-6 {
+  grid-area: six;
+}
+#num-7 {
+  grid-area: seven;
+}
+#num-8 {
+  grid-area: eight;
+}
+#num-9 {
+  grid-area: nine;
+}
+#decimal {
+  grid-area: decimal;
+}
+#clear {
+  grid-area: clear;
+}
+#back {
+  grid-area: back;
+}
+#power {
+  grid-area: power;
+}
+#divide {
+  grid-area: divide;
+}
+#multiply {
+  grid-area: multiply;
+}
+#subtract {
+  grid-area: subtract;
+}
+#add {
+  grid-area: add;
+}
+#equals {
+  grid-area: equals;
 }
