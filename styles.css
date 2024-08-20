@@ -1,40 +1,91 @@
+@font-face {
+  font-family: 'Big Blue';
+  src: url(./fonts/BigBlueTermPlusNerdFont-Regular.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Pro Font';
+  src: url(./fonts/ProFontWindowsNerdFont-Regular.ttf) format('truetype');
+}
+
 body {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 95vh;
 }
 
 main {
+  margin: auto;
+  width: fit-content;
   display: inline-grid;
-  padding: 10px;
+  padding: 20px;
   gap: 5px;
   grid-template-columns: 80px 80px 80px 80px;
-  grid-template-rows: 80px 80px 80px 80px 80px 80px;
+  grid-template-rows: 200px 80px 80px 80px 80px 80px;
   grid-template-areas:
-    "display display display display"
+    "display-frame display-frame display-frame display-frame"
     "clear back power divide"
     "seven eight nine multiply"
     "four five six subtract"
     "one two three add"
     "zero decimal equals add";
+  border: 1px solid #666;
+  border-radius: 10px 10px 50px 10px;
+  background-color: #C0BCB9;
+}
+
+#display-frame {
+  grid-area: display-frame;
+  padding: 15px 50px;
+  width: auto;
+  border: 1px solid #444;
+  border-radius: 10px 10px 50px 10px;
+  background-color: #555461;
 }
 
 #display {
-  display: grid;
-  grid-area: display;
-  width: 336px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
   font-size: 35px;
   overflow: hidden;
+  background-color: #9ABB0E;
 }
+
 #calcHistory,
 #calcInput {
-  justify-self: end;
+  font-family: 'Big Blue';
+  justify-self: center;
   align-self: end;
-  height: 40px;
-  padding-bottom: 5px;
+  padding-top: 15px;
+  padding-right: 15px;
+  height: 60px;
   overflow: hidden;
   text-overflow: clip;
+  color: #0E380E;
 }
 #calcHistory {
   font-size: 25px;
+}
+
+button {
+  border-radius: 50%;
+  font-size: 24pt;
+  font-family: 'Pro Font';
+}
+
+.number {
+  background-color: #0A0A16;
+  color: #77818D;
+}
+
+.operator {
+  background-color: #7D0D49;
+  color: #0A0A16;
 }
 
 #num-0 {
@@ -90,6 +141,7 @@ main {
 }
 #add {
   grid-area: add;
+  border-radius: 25px;
 }
 #equals {
   grid-area: equals;
