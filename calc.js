@@ -1,30 +1,83 @@
-let operandOne, operandTwo, operator;
+const input = document.querySelector("#calcInput"),
+  history = document.querySelector("#calcHistory"),
+  buttons = document.querySelectorAll(".symbol"),
+  operators = document.querySelectorAll(".operator"),
+  operatorsObj = {
+    "^": "power",
+    "/": "divide",
+    "*": "multiply",
+    "-": "subtract",
+    "+": "add",
+  },
+  equals = document.querySelector("#equals"),
+  decimal = document.querySelector("#decimal");
 
-function add(operandOne, operandTwo) {
-  return parseInt(operandOne) + parseInt(operandTwo);
+let num1 = "",
+  num2 = "",
+  operator = "",
+  operatorState = 'off',
+  calcHistory = "",
+  calcAnswer = "";
+
+function add(num1, num2) {
+  return parseInt(num1) + parseInt(num2);
 }
 
-function subtract(operandOne, operandTwo) {
-  return parseInt(operandOne) - parseInt(operandTwo);
+function subtract(num1, num2) {
+  return parseInt(num1) - parseInt(num2);
 }
 
-function multiply(operandOne, operandTwo) {
-  return parseInt(operandOne) * parseInt(operandTwo);
+function multiply(num1, num2) {
+  return parseInt(num1) * parseInt(num2);
 }
 
-function divide(operandOne, operandTwo) {
-  return parseInt(operandOne) / parseInt(operandTwo);
+function divide(num1, num2) {
+  return parseInt(num1) / parseInt(num2);
 }
 
-function operate(operandOne, operator, operandTwo) {
+function operate(num1, operator, num2) {
   switch (operator) {
     case "+":
-      return add(operandOne, operandTwo);
+      return add(num1, num2);
     case "-":
-      return subtract(operandOne, operandTwo);
+      return subtract(num1, num2);
     case "*":
-      return multiply(operandOne, operandTwo);
+      return multiply(num1, num2);
     case "/":
-      return divide(operandOne, operandTwo);
+      return divide(num1, num2);
   }
 }
+
+function displayInput(button) {
+  if (button.textContent in operatorsObj) {
+    operatorState = 'on';
+  }
+  switch (operatorState) {
+    case 'off':
+      num1 += button.textContent;
+      break;
+    case 'on':
+      num2 += button.textContent;
+      break;
+  }
+
+  input.textContent = `${num1.toString()} ${operator.toString()} ${num2.toString()}`;
+}
+
+function buttonListener() {
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      if (button.classList.contains("number")) {
+        operatorState = 'off';
+        displayInput(button);
+      } else if (button.classList.contains("operator")) {
+        displayInput(button);
+        operator = button.textContent;
+      } else if (button.classList.contains("equals")) {
+        operateHandler();
+      }
+    });
+  });
+}
+
+buttonListener();
