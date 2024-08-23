@@ -2,22 +2,15 @@ const input = document.querySelector("#calcInput"),
   history = document.querySelector("#calcHistory"),
   buttons = document.querySelectorAll(".symbol"),
   operators = document.querySelectorAll(".operator"),
-  operatorsObj = {
-    "^": "power",
-    "/": "divide",
-    "*": "multiply",
-    "-": "subtract",
-    "+": "add",
-  },
   equals = document.querySelector("#equals"),
   decimal = document.querySelector("#decimal");
 
 let num1 = "",
   num2 = "",
   operator = "",
-  operatorState = 'off',
-  calcHistory = "",
-  calcAnswer = "";
+  result = "",
+  calcInput = "",
+  calcHistory = "";
 
 function add(num1, num2) {
   return parseInt(num1) + parseInt(num2);
@@ -48,33 +41,43 @@ function operate(num1, operator, num2) {
   }
 }
 
-function displayInput(button) {
-  if (button.textContent in operatorsObj) {
-    operatorState = 'on';
+function showNumber(button) {
+  if (calcInput === '') {
+    input.textContent += button.textContent;
+  } else {
   }
-  switch (operatorState) {
-    case 'off':
-      num1 += button.textContent;
-      break;
-    case 'on':
-      num2 += button.textContent;
-      break;
-  }
+}
 
-  input.textContent = `${num1.toString()} ${operator.toString()} ${num2.toString()}`;
+function operatorHandle(action) {
+  if (num1 === "") {
+    num1 = input.textContent;
+    operator = action.textContent;
+    history.textContent = num1.toString() + " " + operator.toString();
+  } else if (num2 === "") {
+  }
+}
+
+function clearDisplay(task) {
+  if (task === "clear") {
+  } else if (task === "back") {
+  }
 }
 
 function buttonListener() {
   buttons.forEach((button) => {
     button.addEventListener("click", () => {
       if (button.classList.contains("number")) {
-        operatorState = 'off';
-        displayInput(button);
+        showNumber(button);
       } else if (button.classList.contains("operator")) {
-        displayInput(button);
-        operator = button.textContent;
-      } else if (button.classList.contains("equals")) {
-        operateHandler();
+        operatorHandle(button);
+      } else if (button.id === "decimal") {
+        showDecimal(button);
+      } else if (button.id === "equals") {
+        operate(button);
+      } else if (button.id === "clear") {
+        clearDisplay(clear);
+      } else if (button.id === "back") {
+        clearDisplay(button);
       }
     });
   });
