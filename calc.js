@@ -13,19 +13,19 @@ let num1 = "",
   calcHistory = "";
 
 function add(num1, num2) {
-  return parseInt(num1) + parseInt(num2);
+  return parseFloat(num1) + parseFloat(num2);
 }
 
 function subtract(num1, num2) {
-  return parseInt(num1) - parseInt(num2);
+  return parseFloat(num1) - parseFloat(num2);
 }
 
 function multiply(num1, num2) {
-  return parseInt(num1) * parseInt(num2);
+  return parseFloat(num1) * parseFloat(num2);
 }
 
 function divide(num1, num2) {
-  return parseInt(num1) / parseInt(num2);
+  return parseFloat(num1) / parseFloat(num2);
 }
 
 function operate(num1, operator, num2) {
@@ -58,7 +58,8 @@ function operatorHandle(action) {
     num2 = input.textContent;
     history.textContent =
       num1.toString() + " " + operator.toString() + " " + num2.toString();
-    input.textContent = operate(num1, operator, num2);
+    result = operate(num1, operator, num2);
+    input.textContent = result;
   }
 }
 
@@ -70,6 +71,7 @@ function clearDisplay(task) {
     history.textContent = "";
     input.textContent = "";
   } else if (task.id === "back") {
+    input.textContent = input.textContent.slice(0, -1);
   }
 }
 
