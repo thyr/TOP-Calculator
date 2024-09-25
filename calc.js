@@ -42,7 +42,7 @@ function operate(num1, operator, num2) {
 }
 
 function showNumber(button) {
-  if (calcInput === '') {
+  if (calcInput === "") {
     input.textContent += button.textContent;
   } else {
   }
@@ -53,13 +53,23 @@ function operatorHandle(action) {
     num1 = input.textContent;
     operator = action.textContent;
     history.textContent = num1.toString() + " " + operator.toString();
-  } else if (num2 === "") {
+    input.textContent = "";
+  } else {
+    num2 = input.textContent;
+    history.textContent =
+      num1.toString() + " " + operator.toString() + " " + num2.toString();
+    input.textContent = operate(num1, operator, num2);
   }
 }
 
 function clearDisplay(task) {
-  if (task === "clear") {
-  } else if (task === "back") {
+  if (task.id === "clear") {
+    num1 = "";
+    num2 = "";
+    operator = "";
+    history.textContent = "";
+    input.textContent = "";
+  } else if (task.id === "back") {
   }
 }
 
@@ -75,7 +85,7 @@ function buttonListener() {
       } else if (button.id === "equals") {
         operate(button);
       } else if (button.id === "clear") {
-        clearDisplay(clear);
+        clearDisplay(button);
       } else if (button.id === "back") {
         clearDisplay(button);
       }
