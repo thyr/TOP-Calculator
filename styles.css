@@ -8,6 +8,8 @@
   src: url(./fonts/ProFontWindowsNerdFont-Regular.ttf) format('truetype');
 }
 
+
+
 body {
   text-align: center;
   display: flex;
@@ -15,6 +17,7 @@ body {
   align-items: center;
   justify-content: space-between;
   height: 95vh;
+  background-image: url(./img/90s.jpg);
 }
 
 main {
@@ -146,3 +149,9 @@ button {
 #equals {
   grid-area: equals;
 }
+
+footer {
+  color: #C0BCB9;
+}
+
+a {color: #C0BCB9;}

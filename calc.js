@@ -28,6 +28,14 @@ function divide(num1, num2) {
   return parseFloat(num1) / parseFloat(num2);
 }
 
+function power(num1, num2) {
+  let powerResult = 0;
+  for (let times = 1; times < parseInt(num2); times++) {
+    powerResult += parseFloat(num1) * parseFloat(num1);
+  }
+  return powerResult;
+}
+
 function operate(num1, operator, num2) {
   switch (operator) {
     case "+":
@@ -38,6 +46,8 @@ function operate(num1, operator, num2) {
       return multiply(num1, num2);
     case "/":
       return divide(num1, num2);
+    case "Xy":
+      return power(num1, num2);
   }
 }
 
@@ -60,6 +70,8 @@ function operatorHandle(action) {
       num1.toString() + " " + operator.toString() + " " + num2.toString();
     result = operate(num1, operator, num2);
     input.textContent = result;
+    num1 = "";
+    num2 = "";
   }
 }
 
