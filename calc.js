@@ -10,7 +10,8 @@ let num1 = "",
   operator = "",
   result = "",
   calcInput = "",
-  calcHistory = "";
+  calcHistory = "",
+  operated = false;
 
 function add(num1, num2) {
   return parseFloat(num1) + parseFloat(num2);
@@ -25,7 +26,13 @@ function multiply(num1, num2) {
 }
 
 function divide(num1, num2) {
-  return parseFloat(num1) / parseFloat(num2);
+  if (num1 == 0 || num2 == 0) {
+    num1 = "";
+    num2 = "";
+    return (input.textContent = "Paradox!");
+  } else {
+    return parseFloat(num1) / parseFloat(num2);
+  }
 }
 
 function power(num1, num2) {
@@ -62,6 +69,7 @@ function operatorHandle(action) {
   if (num1 === "") {
     num1 = input.textContent;
     operator = action.textContent;
+    operated = false;
     history.textContent = num1.toString() + " " + operator.toString();
     input.textContent = "";
   } else {
@@ -72,6 +80,7 @@ function operatorHandle(action) {
     input.textContent = result;
     num1 = "";
     num2 = "";
+    operated = true;
   }
 }
 
@@ -80,6 +89,8 @@ function clearDisplay(task) {
     num1 = "";
     num2 = "";
     operator = "";
+    result = "";
+    operated = false;
     history.textContent = "";
     input.textContent = "";
   } else if (task.id === "back") {
@@ -90,7 +101,10 @@ function clearDisplay(task) {
 function buttonListener() {
   buttons.forEach((button) => {
     button.addEventListener("click", () => {
-      if (button.classList.contains("number")) {
+      if (button.classList.contains("number") && operated == false) {
+        showNumber(button);
+      } else if (button.classList.contains("number") && operated == true) {
+        clearDisplay(clear);
         showNumber(button);
       } else if (button.classList.contains("operator")) {
         operatorHandle(button);

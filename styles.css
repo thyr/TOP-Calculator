@@ -35,7 +35,7 @@ main {
     "four five six subtract"
     "one two three add"
     "zero decimal equals add";
-  border: 1px solid #666;
+  border: 2px solid #666;
   border-radius: 10px 10px 50px 10px;
   background-color: #C0BCB9;
 }
