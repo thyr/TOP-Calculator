@@ -9,7 +9,6 @@ let num1 = "",
   num2 = "",
   operator = "",
   result = "",
-  calcInput = "",
   calcHistory = "",
   operated = false;
 
@@ -59,9 +58,14 @@ function operate(num1, operator, num2) {
 }
 
 function showNumber(button) {
-  if (calcInput === "") {
+  input.textContent += button.textContent;
+}
+
+function showDecimal(button) {
+  if (input.textContent.includes(".") === false) {
     input.textContent += button.textContent;
   } else {
+    return;
   }
 }
 
@@ -77,7 +81,7 @@ function operatorHandle(action) {
     history.textContent =
       num1.toString() + " " + operator.toString() + " " + num2.toString();
     result = operate(num1, operator, num2);
-    input.textContent = result;
+    input.textContent = Math.round((result + Number.EPSILON) * 100) / 100;
     num1 = "";
     num2 = "";
     operated = true;
